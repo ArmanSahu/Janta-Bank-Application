@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const {hashPassword,comparePassword} = require("../utils/password-Hashing-Comparing")
+const {hashPassword,comparePassword} = require("../utils/password.util")
 
 const {Schema,model} = mongoose;
 // const ObjectId = mongoose.Schema.Types.ObjectId;

@@ -1,6 +1,6 @@
 const { JsonWebTokenError } = require("jsonwebtoken");
 const userModel = require("../models/user.model");
-const {generateToken} = require("../utils/token");
+const {generateToken} = require("../utils/token.util");
 const emailService =  require("../services/email.service");
 /**
 * - user SingUp controller
@@ -40,6 +40,11 @@ async function signUpController(req,res){
         })
     }
 }
+
+/**
+* - user SingUp controller
+* - POST /api/auth/signin
+*/
 
 async function signInController(req,res){
     const {email,password} = req.body;
