@@ -1,7 +1,7 @@
 const { JsonWebTokenError } = require("jsonwebtoken");
 const userModel = require("../models/user.model");
 const {generateToken} = require("../utils/token");
-
+const emailService =  require("../services/email.service");
 /**
 * - user SingUp controller
 * - POST /api/auth/signup
@@ -32,6 +32,7 @@ async function signUpController(req,res){
                 username : user.username,
             }
         });
+        await emailService.sendRegistrationEmail(user.email,user.username);
     }catch(err){
         res.status(500).json({
             message:"Server Error",
@@ -60,7 +61,7 @@ async function signInController(req,res){
         res.cookie("token",token);
 
         res.status(200).json({
-            message : "Signin successfull",
+            message : "Signin successfully",
             token
         });
 
